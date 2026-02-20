@@ -1,0 +1,42 @@
+# Triangle printer for Radhika's project
+# Two patterns:
+# 1) normal right-angled triangle (left-aligned)
+# 2) mirrored right-angled triangle (right-aligned)
+# Uses nested loops
+
+def normal_right_triangle(n, ch='*'):
+    """Prints a left-aligned right-angled triangle of height n."""
+    for row in range(1, n + 1):          # outer loop: rows
+        for col in range(row):           # inner loop: print characters
+            print(ch, end='')
+        print()                          # new line after each row
+
+def mirrored_right_triangle(n, ch='*'):
+    """Prints a right-aligned (mirrored) right-angled triangle of height n."""
+    for row in range(1, n + 1):          # outer loop: rows
+        # inner loop 1: print spaces so the stars are right-aligned
+        for s in range(n - row):
+            print(' ', end='')
+        # inner loop 2: print the stars
+        for col in range(row):
+            print(ch, end='')
+        print()                          # new line after each row
+
+# Simple input and validation
+def main():
+    try:
+        n = int(input("Enter the height of the triangle (positive whole number): ").strip())
+        if n <= 0:
+            raise ValueError
+    except ValueError:
+        print("Please enter a valid positive whole number.")
+        return
+
+    print("\nNormal right-angled triangle (left-aligned):")
+    normal_right_triangle(n, ch='*')
+
+    print("\nMirrored right-angled triangle (right-aligned):")
+    mirrored_right_triangle(n, ch='*')
+
+if __name__ == "__main__":
+    main()
